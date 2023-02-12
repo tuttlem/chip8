@@ -12,6 +12,10 @@ int chip8_step(struct chip8_machine *m) {
 
     if (m->sound_timer > 0) {
         m->sound_timer --;
+
+        if (m->sound_timer == 0) {
+            m->beep_flag = 1;
+        }
     }
 
     // pull the next opcode
@@ -276,6 +280,7 @@ int chip8_execute(struct chip8_machine *m, uint16_t opcode) {
 
                 case 0x18: // set sound timer = Vx (ld ST, Vx)
                     m->sound_timer = m->v[x];
+                    m->beep_flag = 1;
                     m->pc += 2;
                     break;
 

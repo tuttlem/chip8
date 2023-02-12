@@ -55,6 +55,7 @@ struct chip8_machine {
     uint8_t display[(VIDEO_WIDTH * VIDEO_HEIGHT)]; /* display memory */
 
     uint8_t draw_flag;               /* determines if the screen needs to be redrawn */
+    uint8_t beep_flag;               /* determines if the beep needs to be played */
 };
 
 /**
